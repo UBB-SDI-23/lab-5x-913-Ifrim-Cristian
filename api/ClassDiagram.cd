@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="api.Data.DataContext" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAACAAAAAAEAAAAAQAAAAAAAABAAA=</HashCode>
+      <FileName>Data\DataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.BrandController" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAAAAAQAAABAAAABQAAAAAAAAAQAAAAAAAAAAQA=</HashCode>
+      <FileName>Controllers\BrandController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.CigaretteController" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABIAAAAAgBQIAAQAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CigaretteController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.ClientController" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAEAAAAAEAAAAAAASBQAAAAAAAAAAAAAgBAQAAQAQ=</HashCode>
+      <FileName>Controllers\ClientController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.AddBrandDto" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAABAAgAAAAAAAAAAQAAAIAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>DTOs\AddBrandDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.AddCigaretteDto" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQgAACAQAAA=</HashCode>
+      <FileName>DTOs\AddCigaretteDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.AddClientDto" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEgAACAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\AddClientDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.AddOrderDto" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>DTOs\AddOrderDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.BrandStatisticDto" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAQAABAAgAAAAAAAAAAQAAAIAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\BrandStatisticDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.ShowBrandDto" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAABAAgAAAAAAAAAAQAAAIAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\ShowBrandDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.ShowCigaretteDto" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQgAACABAAA=</HashCode>
+      <FileName>DTOs\ShowCigaretteDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.ShowClientAndOrdersDto" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAEgAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\ShowClientAndOrdersDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.ShowClientDto" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEgAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\ShowClientDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.DTOs.ShowOrderDto" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAA=</HashCode>
+      <FileName>DTOs\ShowOrderDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Errors.BrandNotFoundException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAA=</HashCode>
+      <FileName>Errors\BrandNotFoundException.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="api.Errors.CigaretteNotFoundException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Errors\CigaretteNotFoundException.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="api.Errors.ConditionNotMetException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Errors\ConditionNotMetException.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="api.Extensions.StartupExtensions" Collapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Extensions\StartupExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Mappings.BrandMappings" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\BrandMappings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Mappings.CigaretteMappings" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\CigaretteMappings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Mappings.ClientMappings" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\ClientMappings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Mappings.OrderMappings" Collapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mappings\OrderMappings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Middleware.ErrorHandlerMiddleware" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Middleware\ErrorHandlerMiddleware.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="api.Migrations.InitialDB" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230314063624_InitialDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Migrations.OrderManyToMany" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230320194200_OrderManyToMany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Migrations.Updatess" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230327201639_Updatess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Migrations.Updatesss" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230327211354_Updatesss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Migrations.Updatessss" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230327222001_Updatessss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Migrations.DataContextModelSnapshot" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\DataContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Repositories.BrandRepository" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAEAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\BrandRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="api.Repositories.CigaretteRepository" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAgAAIAAAAIA=</HashCode>
+      <FileName>Repositories\CigaretteRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="api.Repositories.ClientRepository" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Repositories\ClientRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="api.Repositories.GenericRepository&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAYAAAAAAAAABAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="api.Repositories.OrderRepository" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="api.Models.Brand" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAABAAgAAAAAAAAAAQAAAIAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Brand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.Cigarette" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQgAACARAAA=</HashCode>
+      <FileName>Models\Cigarette.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.Client" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAEgAACAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.Order" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAEAAAAAAAAAgAAAAAAAAAAAAAAIAAAAgAAAAAQ=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="api.Errors.IExceptionDetails" Collapsed="true">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Errors\IExceptionDetails.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="api.Repositories.Interfaces.IBrandRepository" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Interfaces\IBrandRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="api.Repositories.Interfaces.ICigaretteRepository" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Repositories\Interfaces\ICigaretteRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="api.Repositories.Interfaces.IClientRepository" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Interfaces\IClientRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="api.Repositories.Interfaces.IGenericRepository&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\Interfaces\IGenericRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="api.Repositories.Interfaces.IOrderRepository" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Interfaces\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
