@@ -22,9 +22,9 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllClients()
+        public async Task<IActionResult> GetAllClients([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
-            var clients = await _repo.GetAll();
+            var clients = await _repo.GetAll(page, pageSize);
             if (clients == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}/orders")]
-        public async Task<IActionResult> GetClientOrders(int id)
+        public async Task<IActionResult> GetClientOrders(int id, [FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
             var client = await _repo.GetById(id);
 
@@ -100,7 +100,7 @@ namespace api.Controllers
                 return NotFound();
             }
 
-            var orders = await _orderRepo.GetByClientId(id);
+            var orders = await _orderRepo.GetByClientId(id, page, pageSize);
             return Ok(_mapper.Map<IEnumerable<ShowOrderDto>>(orders));
         }
 

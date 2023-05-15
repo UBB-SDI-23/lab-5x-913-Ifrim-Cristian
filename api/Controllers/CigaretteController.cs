@@ -20,9 +20,9 @@ public class CigaretteController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllCigarettes()
+    public async Task<IActionResult> GetAllCigarettes([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
     {
-        var cigarettes = await _repo.GetAll();
+        var cigarettes = await _repo.GetAll(page, pageSize);
 
         if (cigarettes == null)
         {

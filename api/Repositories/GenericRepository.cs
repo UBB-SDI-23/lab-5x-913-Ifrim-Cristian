@@ -24,9 +24,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return await SaveChanges();
     }
 
-    public virtual async Task<IEnumerable<T>> GetAll()
+    public virtual async Task<IEnumerable<T>> GetAll(int page, int pageSize)
     {
-        return await _context.Set<T>().ToListAsync();
+        return await _context.Set<T>()
+                                    .Skip((page - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .ToListAsync();
     }
 
     public virtual async Task<T?> GetById(int id)

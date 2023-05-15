@@ -13,15 +13,17 @@ namespace api.Repositories
             _context = context;
         }
 
-        public async Task<IList<Order>> GetByClientId(int id)
+        public async Task<IList<Order>> GetByClientId(int id, int page = 1, int pageSize = 30)
         {
-
-            var orders = await _context.Orders
+            return await _context.Orders
                             .Where(c => c.ClientId == id)
                             .Include(c => c.Cigarette)
                             .Include(c => c.Client)
+                            .OrderBy(o => o.OrderId)
+                            .ThenByDescending(o => o.OrderDate)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
                             .ToListAsync();
-            return orders;
         }
 
         public override async Task<Order?> GetById(int id)
