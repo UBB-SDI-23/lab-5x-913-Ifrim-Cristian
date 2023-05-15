@@ -34,5 +34,16 @@ namespace api.Repositories
                             .Take(pageSize)
                             .ToListAsync();
         }
+
+        public async Task<IEnumerable<Brand>> GetByName(string name, int page, int pageSize)
+        {
+            return await _context.Brands
+                            .Include(c => c.Cigarettes)
+                            .Where(b => b.Name.Contains(name))
+                            .OrderBy(b => b.Name)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToListAsync();
+        }
     }
 }

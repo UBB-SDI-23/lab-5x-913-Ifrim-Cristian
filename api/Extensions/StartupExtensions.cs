@@ -18,7 +18,7 @@ public static class StartupExtensions
         });
         return services;
     }
-
+    
     public static IServiceCollection AddMappingProfiles(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(CigaretteMappings));

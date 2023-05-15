@@ -1,3 +1,5 @@
+import { Brand } from "./brand";
+
 export interface Cigarette {
     id: number;
     model: string;
@@ -5,4 +7,5 @@ export interface Cigarette {
     nicotineQuantity: number;
     price: number;
     heated: boolean;
+    brand: Brand;
 }

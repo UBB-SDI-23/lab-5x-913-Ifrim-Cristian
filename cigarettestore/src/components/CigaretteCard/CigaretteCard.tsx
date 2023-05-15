@@ -7,19 +7,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Cigarette } from '../../models/cigarette';
 
-export default function CigaretteCard() {
+export default function CigaretteCard({cigarette}: {cigarette: Cigarette}) {
   return (
     <Card sx={{margin: 1}}>
       <CardContent>
         <Typography sx={{ fontSize: 14, textAlign: 'center' }} color="text.secondary" gutterBottom>
-          Winston
+          {cigarette.brand?.name}
         </Typography>
         <Typography variant="h5" component="div" sx={{ textAlign: 'center'}}>
-          Caster
+          {cigarette.model}
         </Typography>
         <Typography variant="body2">
           <br />
-          A fine tobacco cigarette.
+          {cigarette.type}
 
         </Typography>
       </CardContent>

@@ -29,7 +29,14 @@ public class CigaretteController : ControllerBase
             return NotFound();
         }
 
-        return Ok(_mapper.Map<IEnumerable<AddCigaretteDto>>(cigarettes));
+        return Ok(_mapper.Map<IEnumerable<ShowCigaretteDto>>(cigarettes));
+    }
+
+    [HttpGet("pagecount")]
+    public async Task<IActionResult> GetPageCount([FromQuery] int pageSize = 30)
+    {
+        var pageCount = await _repo.NumberOfPages(pageSize);
+        return Ok(pageCount);
     }
 
     [HttpGet("{id}")]

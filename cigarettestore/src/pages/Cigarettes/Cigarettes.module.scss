@@ -17,6 +17,12 @@ body {
 .wrapper {
   flex-grow: 1;
 
+  .actionsWrapper {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .cigarettesGrid {
     margin-top: 1   .5rem;
     padding: 1.5rem 2rem;

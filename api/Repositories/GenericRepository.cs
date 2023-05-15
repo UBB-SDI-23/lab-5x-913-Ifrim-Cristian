@@ -37,6 +37,17 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return await _context.Set<T>().FindAsync(id);
     }
 
+    public async Task<int> NumberOfPages(int pageSize = 30)
+    {
+        int total = await _context.Set<T>().CountAsync();
+        int totalPages = total / pageSize;
+        
+        if (total % pageSize > 0)
+            totalPages++;
+
+        return totalPages;
+    }
+
     public async Task<bool> SaveChanges()
     {
         return await _context.SaveChangesAsync() > 0;

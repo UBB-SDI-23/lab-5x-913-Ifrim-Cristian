@@ -32,6 +32,27 @@ namespace api.Controllers
             return Ok(_mapper.Map<ICollection<AddBrandDto>>(brands));
         }
 
+        [HttpGet("pagecount")]
+        public async Task<IActionResult> GetPageCount([FromQuery] int pageSize = 30)
+        {
+            var pageCount = await _repo.NumberOfPages(pageSize);
+            return Ok(pageCount);
+        }
+
+
+        [HttpGet("search")]
+        public async Task<IActionResult> GetBrandsByName([FromQuery] string name, [FromQuery] int page = 1, [FromQuery] int pageSize = 7)
+        {
+            var brands = await _repo.GetByName(name, page, pageSize);
+            
+            if (brands == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<ICollection<AddBrandDto>>(brands));
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBrandById(int id)
         {
