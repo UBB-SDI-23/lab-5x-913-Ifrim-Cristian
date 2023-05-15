@@ -20,9 +20,9 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllBrands()
+        public async Task<IActionResult> GetAllBrands([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
-            var brands = await _repo.GetAll();
+            var brands = await _repo.GetAll(page, pageSize);
             
             if (brands == null)
             {
@@ -90,9 +90,9 @@ namespace api.Controllers
         }
 
         [HttpGet("statistics")]
-        public async Task<IActionResult> GetStatistics()
+        public async Task<IActionResult> GetStatistics([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
-            var brands = await _repo.GetAll();
+            var brands = await _repo.GetAll(page, pageSize);
 
             if(brands == null)
             {
@@ -103,9 +103,9 @@ namespace api.Controllers
         }
 
         [HttpGet("price-statistics")]
-        public async Task<IActionResult> GetPriceStatistics()
+        public async Task<IActionResult> GetPriceStatistics([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
-            var brands = await _repo.GetAll();
+            var brands = await _repo.GetAll(page, 30);
 
             if(brands == null)
             {

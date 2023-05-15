@@ -25,10 +25,13 @@ namespace api.Repositories
                             .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public override async Task<IEnumerable<Brand>> GetAll()
+        public override async Task<IEnumerable<Brand>> GetAll(int page, int pageSize)
         {
             return await _context.Brands
                             .Include(c => c.Cigarettes)
+                            .OrderBy(b => b.Id)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
                             .ToListAsync();
         }
     }
