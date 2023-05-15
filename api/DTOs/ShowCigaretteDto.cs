@@ -8,6 +8,7 @@ namespace api.DTOs
         public int NicotineQuantity { get; set; }
         public float Price { get; set; }
         public bool IsHeated { get; set; }
+        public int NumberOfOrders { get; set; }
         public AddBrandDto Brand { get; set; } = default!;       
     }
 }

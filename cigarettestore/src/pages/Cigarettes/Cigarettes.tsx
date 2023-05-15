@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { Cigarette } from "../../models/cigarette";
 import { CigaretteService } from "../../services/CigaretteService";
-import { Grid, Pagination } from "@mui/material";
+import { Grid, Pagination} from "@mui/material";
 import style from "./Cigarettes.module.scss";
 import CigaretteCard from "../../components/CigaretteCard/CigaretteCard";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -69,7 +69,7 @@ const Cigarettes = () => {
   const [cigarettes, setCigarettes] = useState<Cigarette[]>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
-  const [pageSize, setPageSize] = useState(24);
+  const [pageSize, setPageSize] = useState(12);
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
@@ -131,6 +131,7 @@ const Cigarettes = () => {
 
     setCigarettes(newCigarettes);
   };
+
 
   return (
     <div className={style.wrapper}>

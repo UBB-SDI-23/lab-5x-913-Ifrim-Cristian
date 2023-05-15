@@ -10,7 +10,14 @@ import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Brand } from "../../models/brand";
 import { BrandService } from "../../services/BrandService";
-import { Fab, FormControlLabel, Switch } from "@mui/material";
+import {
+  Alert,
+  AlertColor,
+  Fab,
+  FormControlLabel,
+  Snackbar,
+  Switch,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { CigaretteService } from "../../services/CigaretteService";
 import { Cigarette } from "../../models/cigarette";
@@ -82,7 +89,11 @@ function BrandSelect({
   );
 }
 
-export default function AddCigarette({refreshPage}: {refreshPage: () => void}) {
+export default function AddCigarette({
+  refreshPage,
+}: {
+  refreshPage: () => void;
+}) {
   const [open, setOpen] = React.useState(false);
 
   const [brandId, setBrandId] = React.useState<number>(0);
@@ -92,6 +103,10 @@ export default function AddCigarette({refreshPage}: {refreshPage: () => void}) {
   const [price, setPrice] = React.useState<number>(0);
   const [heated, setHeated] = React.useState<boolean>(false);
 
+  const [message, setMessage] = React.useState("");
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [severity, setSeverity] = React.useState<AlertColor>("success");
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -100,9 +115,42 @@ export default function AddCigarette({refreshPage}: {refreshPage: () => void}) {
     setOpen(false);
   };
 
-  const handleAdd = () => {
+  const handleSnackbarClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
+
+  const handleAdd = async () => {
     const cigaretteService = new CigaretteService();
-    cigaretteService.postCigarette(brandId, model, type, heated, nicotineQuantity, price);
+    const response = await cigaretteService.postCigarette(
+      brandId,
+      model,
+      type,
+      heated,
+      nicotineQuantity,
+      price
+    );
+
+    if (response.status === 200) {
+      setMessage("Cigarette added successfully");
+      setSeverity("success");
+      setOpenSnackbar(true);
+    } else if (response.status === 400) {
+      setMessage("Cigarette could not be added");
+      setSeverity("error");
+      setOpenSnackbar(true);
+    } else {
+      setMessage(response.statusText + " " + response.status);
+      setSeverity("error");
+      setOpenSnackbar(true);
+    }
+
     refreshPage();
     setOpen(false);
   };
@@ -112,6 +160,19 @@ export default function AddCigarette({refreshPage}: {refreshPage: () => void}) {
       <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
         <AddIcon />
       </Fab>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={severity}
+          sx={{ width: "100%" }}
+        >
+          Status: {message}
+        </Alert>
+      </Snackbar>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Cigarette</DialogTitle>
         <DialogContent>

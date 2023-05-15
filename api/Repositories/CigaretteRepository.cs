@@ -17,6 +17,7 @@ public class CigaretteRepository : GenericRepository<Cigarette>, ICigaretteRepos
     {
         return await _context.Cigarettes
                         .Include(u => u.Brand)
+                        .Include(o => o.Orders)
                         .OrderBy(u => u.Id)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize)

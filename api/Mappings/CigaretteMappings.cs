@@ -11,6 +11,7 @@ public class CigaretteMappings : Profile
         // Source -> Target
         CreateMap<AddCigaretteDto, Cigarette>();
         CreateMap<Cigarette, AddCigaretteDto>();
-        CreateMap<Cigarette, ShowCigaretteDto>();
+        CreateMap<Cigarette, ShowCigaretteDto>()
+            .ForMember(dest => dest.NumberOfOrders, opt => opt.MapFrom(src => src.Orders.Count));
     }
 }
