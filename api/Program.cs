@@ -17,6 +17,9 @@ builder.Services.AddRepositories();
 builder.Services.AddMiddlewareServices();
 builder.Services.AddCors();
 
+builder.Services.AddIdentity();
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +36,8 @@ app.UseCors(builder =>
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

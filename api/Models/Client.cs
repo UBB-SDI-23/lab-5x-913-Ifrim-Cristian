@@ -1,17 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace api.Models
 {
-    public class Client
+    public class Client : IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty!;
         public string SecondName { get; set; } = string.Empty!;
         public DateTime DateOfBirth { get; set; } = default!;
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-
+        public string Address { get; set; } = string.Empty;
         public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

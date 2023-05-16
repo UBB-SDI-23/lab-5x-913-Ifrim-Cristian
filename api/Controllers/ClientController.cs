@@ -116,7 +116,7 @@ namespace api.Controllers
             foreach(var orderDto in ordersDto)
             {
                 var order = _mapper.Map<Order>(orderDto);
-                order.ClientId = id;
+                order.ClientId = id.ToString();
                 order.OrderDate = DateTime.Now;
                 await _orderRepo.Add(order);
             }
@@ -165,7 +165,7 @@ namespace api.Controllers
                     return NotFound();
                 }
 
-                order.ClientId = id;
+                order.ClientId = id.ToString();
                 order.Client = client;
                 
                 await _orderRepo.Update(order);

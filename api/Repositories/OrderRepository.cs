@@ -16,7 +16,7 @@ namespace api.Repositories
         public async Task<IList<Order>> GetByClientId(int id, int page = 1, int pageSize = 30)
         {
             return await _context.Orders
-                            .Where(c => c.ClientId == id)
+                            .Where(c => c.ClientId == id.ToString())
                             .Include(c => c.Cigarette)
                             .Include(c => c.Client)
                             .OrderBy(o => o.OrderId)

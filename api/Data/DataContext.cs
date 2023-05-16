@@ -1,11 +1,11 @@
 using api.Models;
-using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;  
+using Microsoft.EntityFrameworkCore; 
 namespace api.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext<Client>
 {
-    public DataContext(DbContextOptions options) : base(options)
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
 
     }
@@ -26,6 +26,9 @@ public class DataContext : DbContext
             .HasOne<Cigarette>(o => o.Cigarette)
             .WithMany(o => o.Orders)
             .HasForeignKey(o => o.CigaretteId);
+
+
+        base.OnModelCreating(modelBuilder);
 
     }
 

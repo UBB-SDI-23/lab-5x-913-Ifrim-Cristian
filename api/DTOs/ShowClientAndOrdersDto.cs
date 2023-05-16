@@ -2,7 +2,7 @@ namespace api.DTOs
 {
     public class ShowClientAndOrdersDto
     {
-        public int Id { get; set; }
+        public string Id { get; set; } = string.Empty!;
         public string FirstName { get; set; } = string.Empty!;
         public string SecondName { get; set; } = string.Empty!;
         public DateTime DateOfBirth { get; set; } = default!;

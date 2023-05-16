@@ -18,7 +18,7 @@ namespace api.Repositories
             return  await _context.Clients
                             .Include(o => o.Orders)
                             .ThenInclude(c => c.Cigarette)
-                            .FirstOrDefaultAsync(c => c.Id == id);
+                            .FirstOrDefaultAsync(c => c.Id == id.ToString());
         }
 
         public async Task<Client?> GetClientByEmail(string email)
