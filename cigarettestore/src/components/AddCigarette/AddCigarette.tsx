@@ -137,7 +137,7 @@ export default function AddCigarette({
       price
     );
 
-    if (response.status === 200) {
+    if (response.id != null) {
       setMessage("Cigarette added successfully");
       setSeverity("success");
       setOpenSnackbar(true);

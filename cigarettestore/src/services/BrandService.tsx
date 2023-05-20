@@ -24,9 +24,20 @@ export class BrandService {
     return await response.json();
   };
 
-  postBrand = async (Brand: Brand) => {
+  postBrand = async (name: string, description: string, country: string, year: number, logo: string) => {
     const response = await fetch(BACKEND_API_URL + BRANDS_URL, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        description: description,
+        country: country,
+        year: year,
+        logo: logo,
+      }),
     });
 
     return await response.json();
