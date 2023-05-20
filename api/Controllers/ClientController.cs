@@ -21,6 +21,13 @@ namespace api.Controllers
             _orderRepo = orderRepository;
         }
 
+        [HttpGet("pagecount")]
+        public async Task<IActionResult> GetPageCount([FromQuery] int pageSize = 30)
+        {
+            var pageCount = await _repo.NumberOfPages(pageSize);
+            return Ok(pageCount);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllClients([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
