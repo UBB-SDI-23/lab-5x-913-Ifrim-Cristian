@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Cigarettes from "./pages/Cigarettes/Cigarettes";
 import NoPage from "./pages/NoPage/NoPage";
 import Brands from "./pages/Brands/Brands";
+import Clients from "./pages/Clients/Clients";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="cigarettes" element={<Cigarettes />} />
         <Route path="brands" element={<Brands />} />
+        <Route path="clients" element={<Clients />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

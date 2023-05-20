@@ -6,18 +6,26 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import { Alert, AlertColor, Fab, Snackbar } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { BrandService } from "../../services/BrandService";
+import { ClientService } from "../../services/ClientService";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-export default function AddBrand({ refreshPage }: { refreshPage: () => void }) {
+export default function AddClient({
+  refreshPage,
+}: {
+  refreshPage: () => void;
+}) {
   const [open, setOpen] = React.useState(false);
 
-  const [name, setName] = React.useState("");
-  const [year, setYear] = React.useState(0);
-  const [description, setDescription] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [logo, setLogo] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [secondName, setSecondName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [dateOfBirth, setDateOfBirth] = React.useState<Date | null>(null);
+  const [password, setPassword] = React.useState("");
 
   const [message, setMessage] = React.useState("");
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -43,23 +51,22 @@ export default function AddBrand({ refreshPage }: { refreshPage: () => void }) {
   };
 
   const handleAdd = async () => {
-    const cigaretteService = new BrandService();
-    const response = await cigaretteService.postBrand(
-      name,
-      description,
-      country,
-      year,
-      logo
+    const clientService = new ClientService();
+    const response = await clientService.postClient(
+      firstName,
+      secondName,
+      email,
+      dateOfBirth,
+      password
     );
 
     if (response.id != null) {
-      setMessage("Brand added successfully");
+      setMessage("Cigarette added successfully");
       setSeverity("success");
       setOpenSnackbar(true);
     } else if (response.status === 400) {
       const msg = response.errors.Type.join("\n");
-
-      setMessage(msg == null ? "Brand could not be added" : msg);
+      setMessage(msg == null ? "Client could not be added" : msg);
       setSeverity("error");
       setOpenSnackbar(true);
     } else {
@@ -91,75 +98,73 @@ export default function AddBrand({ refreshPage }: { refreshPage: () => void }) {
         </Alert>
       </Snackbar>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add Brand</DialogTitle>
+        <DialogTitle>Add Client</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please fill in the forms to add a brand.
+            Please fill in the forms to add a clients.
           </DialogContentText>
         </DialogContent>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            id="select-name"
-            label="Name"
+            id="select-firstName"
+            label="First Name"
             type="text"
             fullWidth
             variant="outlined"
             onChange={(event) => {
-              setName(event.target.value);
+              setFirstName(event.target.value);
             }}
           />
 
           <TextField
             autoFocus
             margin="dense"
-            id="select-country"
-            label="Country"
+            id="select-secondName"
+            label="Second Name"
             type="text"
             fullWidth
             variant="outlined"
             onChange={(event) => {
-              setCountry(event.target.value);
+              setSecondName(event.target.value);
             }}
           />
 
           <TextField
             autoFocus
             margin="dense"
-            id="select-description"
-            label="Description"
+            id="select-email"
+            label="E-mail"
             type="text"
             fullWidth
             variant="outlined"
             onChange={(event) => {
-              setDescription(event.target.value);
+              setEmail(event.target.value);
             }}
           />
 
-          <TextField
-            autoFocus
-            margin="dense"
-            id="select-logo"
-            label="Logo"
-            type="text"
-            fullWidth
-            variant="outlined"
-            onChange={(event) => {
-              setLogo(event.target.value);
-            }}
-          />
-
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <TextField
-              id="select-year"
-              label="Year"
-              type="number"
-              onChange={(event) => {
-                setYear(Number(event.target.value));
-              }}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Birthday"
+              value={dateOfBirth}
+              sx={{ width: "100%" }}
+              onChange={(newValue) => setDateOfBirth(newValue)}
             />
-          </div>
+          </LocalizationProvider>
+
+          <TextField
+            autoFocus
+            margin="dense"
+            id="select-password"
+            label="Password"
+            type="password"
+            fullWidth
+            variant="outlined"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

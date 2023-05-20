@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { CigaretteService } from "../../services/CigaretteService";
-import { Cigarette } from "../../models/cigarette";
 
 function BrandSelect({
   handleChange,
@@ -142,7 +141,9 @@ export default function AddCigarette({
       setSeverity("success");
       setOpenSnackbar(true);
     } else if (response.status === 400) {
-      setMessage("Cigarette could not be added");
+      const msg = response.errors.Type.join("\n");
+      
+      setMessage(msg == null ? "Cigarette could not be added" : msg);
       setSeverity("error");
       setOpenSnackbar(true);
     } else {
@@ -170,7 +171,7 @@ export default function AddCigarette({
           severity={severity}
           sx={{ width: "100%" }}
         >
-          Status: {message}
+          {message}
         </Alert>
       </Snackbar>
       <Dialog open={open} onClose={handleClose}>
