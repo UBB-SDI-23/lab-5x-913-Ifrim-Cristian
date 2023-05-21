@@ -15,12 +15,21 @@ builder.Services.AddDataContext(builder.Configuration);
 builder.Services.AddMappingProfiles();
 builder.Services.AddRepositories();
 builder.Services.AddMiddlewareServices();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
     app.UseSwagger();
     app.UseSwaggerUI();
+
+app.UseCors(builder =>
+    {
+        builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 

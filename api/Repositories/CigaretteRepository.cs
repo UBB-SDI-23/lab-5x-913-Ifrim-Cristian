@@ -13,10 +13,14 @@ public class CigaretteRepository : GenericRepository<Cigarette>, ICigaretteRepos
         _context = context;
     }
 
-    public override async Task<IEnumerable<Cigarette>> GetAll()
+    public override async Task<IEnumerable<Cigarette>> GetAll(int page, int pageSize)
     {
         return await _context.Cigarettes
                         .Include(u => u.Brand)
+                        .Include(o => o.Orders)
+                        .OrderBy(u => u.Id)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
                         .ToListAsync();
     }
 
@@ -39,11 +43,14 @@ public class CigaretteRepository : GenericRepository<Cigarette>, ICigaretteRepos
         );
     }
 
-    public async Task<IEnumerable<Cigarette>> GetCigarettesByPrice(float price)
+    public async Task<IEnumerable<Cigarette>> GetCigarettesByPrice(float price, int page, int pageSize)
     {
         return await _context.Cigarettes
                         .Where(u => u.Price > price)
                         .Include(b => b.Brand)
+                        .OrderBy(u => u.Id)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
                         .ToListAsync();
     }
 }

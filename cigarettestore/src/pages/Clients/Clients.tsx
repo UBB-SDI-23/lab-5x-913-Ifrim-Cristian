@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { Cigarette } from "../../models/cigarette";
-import { CigaretteService } from "../../services/CigaretteService";
-import { Grid, Pagination} from "@mui/material";
-import style from "./Cigarettes.module.scss";
-import CigaretteCard from "../../components/CigaretteCard/CigaretteCard";
+import { Client } from "../../models/client";
+import { ClientService } from "../../services/ClientService";
+import { Grid, Pagination } from "@mui/material";
+import style from "./Clients.module.scss";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import AddCigarette from "../../components/AddCigarette/AddCigarette";
+import AddClient from "../../components/AddClient/AddClient";
+import ClientCard from "../../components/ClientCard/ClientCard";
 
 function SortOptions({
   className,
@@ -37,25 +37,27 @@ function SortOptions({
       className={className}
       aria-label="Platform"
     >
-      <ToggleButton value={alignment === "BrandAsc" ? "BrandDesc" : "BrandAsc"}>
-        Brand
-        {alignment === "BrandAsc" ? (
-          <ArrowUpwardIcon sx={{ fontSize: 15 }} />
-        ) : (
-          <ArrowDownwardIcon sx={{ fontSize: 15 }} />
-        )}
-      </ToggleButton>
-      <ToggleButton value={alignment === "TypeAsc" ? "TypeDesc" : "TypeAsc"}>
-        Type
-        {alignment === "TypeAsc" ? (
-          <ArrowUpwardIcon sx={{ fontSize: 15 }} />
-        ) : (
-          <ArrowDownwardIcon sx={{ fontSize: 15 }} />
-        )}
-      </ToggleButton>
       <ToggleButton value={alignment === "NameAsc" ? "NameDesc" : "NameAsc"}>
         Name
         {alignment === "NameAsc" ? (
+          <ArrowUpwardIcon sx={{ fontSize: 15 }} />
+        ) : (
+          <ArrowDownwardIcon sx={{ fontSize: 15 }} />
+        )}
+      </ToggleButton>
+      <ToggleButton value={alignment === "EmailAsc" ? "EmailDesc" : "EmailAsc"}>
+        Email
+        {alignment === "EmailAsc" ? (
+          <ArrowUpwardIcon sx={{ fontSize: 15 }} />
+        ) : (
+          <ArrowDownwardIcon sx={{ fontSize: 15 }} />
+        )}
+      </ToggleButton>
+      <ToggleButton
+        value={alignment === "BirthdateAsc" ? "BirthdateDesc" : "BirthdateAsc"}
+      >
+        Birthdate
+        {alignment === "BirthdateAsc" ? (
           <ArrowUpwardIcon sx={{ fontSize: 15 }} />
         ) : (
           <ArrowDownwardIcon sx={{ fontSize: 15 }} />
@@ -65,8 +67,8 @@ function SortOptions({
   );
 }
 
-const Cigarettes = () => {
-  const [cigarettes, setCigarettes] = useState<Cigarette[]>([]);
+const Clients = () => {
+  const [clients, setClients] = useState<Client[]>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const [pageSize, setPageSize] = useState(12);
@@ -74,10 +76,10 @@ const Cigarettes = () => {
 
   useEffect(() => {
     let ignore = false;
-    const cigaretteService = new CigaretteService();
+    const clientService = new ClientService();
 
     async function startFetching() {
-      const json = await cigaretteService.getPageCount(pageSize);
+      const json = await clientService.getPageCount(pageSize);
       if (!ignore) {
         setPageCount(json);
       }
@@ -88,13 +90,13 @@ const Cigarettes = () => {
 
   useEffect(() => {
     let ignore = false;
-    const cigaretteService = new CigaretteService();
+    const clientService = new ClientService();
 
     async function startFetching() {
-      const json = await cigaretteService.getAllCigarettes(page, pageSize);
+      const json = await clientService.getAllClients(page, pageSize);
       if (!ignore) {
         console.log(json);
-        setCigarettes(json);
+        setClients(json);
       }
     }
 
@@ -111,43 +113,46 @@ const Cigarettes = () => {
 
   const onChange = (alignment: string) => {
     console.log(alignment);
-    const newCigarettes = [...cigarettes];
-    newCigarettes.sort((a, b) => {
-      if (alignment === "BrandAsc") {
-        return a.brand.name.localeCompare(b.brand.name);
-      } else if (alignment === "BrandDesc") {
-        return b.brand.name.localeCompare(a.brand.name);
-      } else if (alignment === "TypeAsc") {
-        return a.type.localeCompare(b.type);
-      } else if (alignment === "TypeDesc") {
-        return b.type.localeCompare(a.type);
-      } else if (alignment === "NameAsc") {
-        return a.model.localeCompare(b.model);
+    const newClients = [...clients];
+    newClients.sort((a, b) => {
+      if (alignment === "NameAsc") {
+        return (a.firstName + " " + a.secondName).localeCompare(
+          b.firstName + " " + b.secondName
+        );
       } else if (alignment === "NameDesc") {
-        return b.model.localeCompare(a.model);
+        return (b.firstName + " " + b.secondName).localeCompare(
+          a.firstName + " " + a.secondName
+        );
+      } else if (alignment === "EmailAsc") {
+        return a.email.localeCompare(b.email);
+      } else if (alignment === "EmailDesc") {
+        return b.email.localeCompare(a.email);
+      } else if (alignment === "BirthdateAsc") {
+        return a.dateOfBirth.localeCompare(b.dateOfBirth);
+      } else if (alignment === "BirthdateDesc") {
+        return b.dateOfBirth.localeCompare(a.dateOfBirth);
       }
       return 0;
     });
 
-    setCigarettes(newCigarettes);
+    setClients(newClients);
   };
-
 
   return (
     <div className={style.wrapper}>
       <Navbar />
       <div className={style.actionsWrapper}>
         <SortOptions onChange={onChange} />
-        <AddCigarette refreshPage={() => setRefresh(!refresh)} />
+        <AddClient refreshPage={() => setRefresh(!refresh)} />
       </div>
       <Grid
         container
         className={style.cigarettesGrid}
         columns={{ xs: 1, sm: 9, md: 12, lg: 12 }}
       >
-        {cigarettes.map((_, index) => (
+        {clients.map((_, index) => (
           <Grid item xs={1} sm={3} lg={2} key={index}>
-            <CigaretteCard cigarette={cigarettes[index]} />
+            <ClientCard client={clients[index]} />
           </Grid>
         ))}
       </Grid>
@@ -162,4 +167,4 @@ const Cigarettes = () => {
   );
 };
 
-export default Cigarettes;
+export default Clients;

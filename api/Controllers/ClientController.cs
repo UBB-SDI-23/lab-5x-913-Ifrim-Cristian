@@ -21,10 +21,17 @@ namespace api.Controllers
             _orderRepo = orderRepository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllClients()
+        [HttpGet("pagecount")]
+        public async Task<IActionResult> GetPageCount([FromQuery] int pageSize = 30)
         {
-            var clients = await _repo.GetAll();
+            var pageCount = await _repo.NumberOfPages(pageSize);
+            return Ok(pageCount);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllClients([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
+        {
+            var clients = await _repo.GetAll(page, pageSize);
             if (clients == null)
             {
                 return NotFound();
@@ -91,7 +98,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}/orders")]
-        public async Task<IActionResult> GetClientOrders(int id)
+        public async Task<IActionResult> GetClientOrders(int id, [FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
             var client = await _repo.GetById(id);
 
@@ -100,7 +107,7 @@ namespace api.Controllers
                 return NotFound();
             }
 
-            var orders = await _orderRepo.GetByClientId(id);
+            var orders = await _orderRepo.GetByClientId(id, page, pageSize);
             return Ok(_mapper.Map<IEnumerable<ShowOrderDto>>(orders));
         }
 

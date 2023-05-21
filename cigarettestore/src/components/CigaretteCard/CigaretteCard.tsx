@@ -1,5 +1,3 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,20 +5,27 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Cigarette } from '../../models/cigarette';
 
-export default function CigaretteCard() {
+export default function CigaretteCard({cigarette}: {cigarette: Cigarette}) {
   return (
     <Card sx={{margin: 1}}>
       <CardContent>
-        <Typography sx={{ fontSize: 14, textAlign: 'center' }} color="text.secondary" gutterBottom>
-          Winston
+        <Typography sx={{ fontSize: 15, textAlign: 'center' }} color="text.secondary" gutterBottom>
+          {cigarette.brand?.name}
         </Typography>
         <Typography variant="h5" component="div" sx={{ textAlign: 'center'}}>
-          Caster
+          {cigarette.model}
         </Typography>
         <Typography variant="body2">
           <br />
-          A fine tobacco cigarette.
-
+          Type: {cigarette.type}
+          <br />
+          Nicotine: {cigarette.nicotineQuantity} mg
+          <br />
+          Requires heating: {cigarette.heated ? 'Yes' : 'No'}
+          <br />
+          Price: {cigarette.price} RON
+          <br />
+          Ordered {cigarette.numberOfOrders} times 
         </Typography>
       </CardContent>
       <CardActions>

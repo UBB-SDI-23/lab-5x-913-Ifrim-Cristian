@@ -11,7 +11,7 @@ namespace api.Mappings
             // Source -> Target
             CreateMap<AddBrandDto, Brand>();
             CreateMap<Brand, AddBrandDto>()
-                .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
             CreateMap<Brand, ShowBrandDto>();
             CreateMap<Brand, BrandStatisticDto>()
                 .ForMember(dest => dest.AverageNicotine, opt => opt.MapFrom(src => (src.Cigarettes == null || src.Cigarettes.Count() == 0)? 0 : src.Cigarettes.Average(c => c.NicotineQuantity)));

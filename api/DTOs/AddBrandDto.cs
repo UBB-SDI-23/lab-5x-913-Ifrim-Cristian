@@ -4,7 +4,7 @@ namespace api.DTOs
 {
     public class AddBrandDto
     {
-        public int BrandId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; } = string.Empty;
         [Required]
