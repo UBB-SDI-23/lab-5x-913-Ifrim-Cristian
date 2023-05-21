@@ -7,5 +7,9 @@ export interface Brand {
     country: string;
     year: number;
     logo: string;
+
     cigarettes?: Cigarette[];
+
+    averageNicotine?: number;
+    averagePrice?: number;
 }

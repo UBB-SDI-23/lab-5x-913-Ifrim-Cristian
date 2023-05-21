@@ -110,7 +110,7 @@ namespace api.Controllers
             return Ok();
         }
 
-        [HttpGet("statistics")]
+        [HttpGet("nicotine-statistics")]
         public async Task<IActionResult> GetStatistics([FromQuery] int page = 1, [FromQuery] int pageSize = 30)
         {
             var brands = await _repo.GetAll(page, pageSize);
