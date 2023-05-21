@@ -22,6 +22,10 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+
+  const [anchorElStatistics, setAnchorElStatistics] =
+    React.useState<null | HTMLElement>(null);
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -29,12 +33,21 @@ const Navbar = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  const handleOpenStatisticsMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElStatistics(event.currentTarget);
+  };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleCloseStatisticsMenu = () => {
+    setAnchorElStatistics(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -47,6 +60,8 @@ const Navbar = () => {
     <AppBar position="static" className={style.navbar}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* For larger screens */}
+
           <SmokingRoomsIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
             onClick={() => navigate("/")}
@@ -59,6 +74,93 @@ const Navbar = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            Nic Shop
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/" + page.toLocaleLowerCase());
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+
+            <Button
+              onClick={handleOpenStatisticsMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Statistics
+            </Button>
+
+            <Menu
+              id="statistics-menu"
+              anchorEl={anchorElStatistics}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElStatistics)}
+              onClose={handleCloseStatisticsMenu}
+              sx={{
+                display: { xs: "none", md: "block" },
+              }}
+            >
+              <MenuItem
+                key={"price-statistics"}
+                onClick={() => {
+                  handleCloseStatisticsMenu();
+                  navigate("/" + "price-statistics");
+                }}
+              >
+                <Typography textAlign="center">Price Statistics</Typography>
+              </MenuItem>
+
+              <MenuItem
+                key={"nicotine-statistics"}
+                onClick={() => {
+                  handleCloseStatisticsMenu();
+                  navigate("/" + "nicotine-statistics");
+                }}
+              >
+                <Typography textAlign="center">
+                  Average Nicotine Statistics
+                </Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+
+          {/* For small screens */}
+
+          <SmokingRoomsIcon
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            onClick={() => navigate("/")}
+          />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -108,49 +210,33 @@ const Navbar = () => {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+                <MenuItem
+                  key={"price-statistics"}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate("/" + "price-statistics");
+                  }}
+                >
+                  <Typography textAlign="center">Price Statistics</Typography>
+                </MenuItem>
+
+                <MenuItem
+                  key={"nicotine-statistics"}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate("/" + "nicotine-statistics");
+                  }}
+                >
+                  <Typography textAlign="center">Nicotine Statistics</Typography>
+                </MenuItem>
             </Menu>
-          </Box>
-          <SmokingRoomsIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-            onClick={() => navigate("/")}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Nic Shop
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => {
-                  handleCloseNavMenu();
-                  navigate("/" + page.toLocaleLowerCase());
-                }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+              <Button onClick={handleOpenUserMenu} sx={{ p: 0, color: "white" }}>
+                  Sign In
+              </Button>
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}

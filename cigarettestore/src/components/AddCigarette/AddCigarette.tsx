@@ -141,7 +141,7 @@ export default function AddCigarette({
       setSeverity("success");
       setOpenSnackbar(true);
     } else if (response.status === 400) {
-      const msg = response.errors.Type.join("\n");
+      const msg = Object.values(response.errors).join(", ");
       
       setMessage(msg == null ? "Cigarette could not be added" : msg);
       setSeverity("error");

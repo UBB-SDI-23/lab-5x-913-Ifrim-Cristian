@@ -1,19 +1,29 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Brand } from '../../models/brand';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Brand } from "../../models/brand";
 
-export default function BrandCard({brand}: {brand: Brand}) {
+export default function BrandCard({
+  brand,
+  children,
+}: {
+  brand: Brand;
+  children?: React.ReactNode;
+}) {
   return (
-    <Card sx={{margin: 1}}>
+    <Card sx={{ margin: 1 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 15, textAlign: 'center' }} color="text.secondary" gutterBottom>
+        <Typography
+          sx={{ fontSize: 15, textAlign: "center" }}
+          color="text.secondary"
+          gutterBottom
+        >
           {brand.name}
         </Typography>
-        <Typography variant="h5" component="div" sx={{ textAlign: 'center'}}>
+        <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
           {brand.year}
         </Typography>
         <Typography variant="body2">
@@ -21,6 +31,7 @@ export default function BrandCard({brand}: {brand: Brand}) {
           {brand.description}
           <br />
           Country: {brand.country}
+          {React.Children.map(children, (child) => child)}
         </Typography>
       </CardContent>
       <CardActions>
